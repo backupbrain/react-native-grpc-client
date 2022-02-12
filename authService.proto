@@ -1,0 +1,19 @@
+syntax = "proto3";
+package authService;
+option objc_class_prefix = "RTG"; // important for iOS / Xcode
+// Define a service
+// Define data types here
+message AccountCredentials {
+  string username = 1;
+  string password = 2;
+}
+message OauthCredentials {
+  string token = 3;
+  uint32 timeoutSeconds = 4;
+}
+// Define the service containing methods here
+service AuthServiceRoutes {
+  // Basic function call, makes request and returns value
+  rpc Login(AccountCredentials) returns (OauthCredentials) {}
+  rpc Logout(OauthCredentials) returns (OauthCredentials) {}
+}
